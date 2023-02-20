@@ -1,0 +1,40 @@
+services:
+    php-fpm:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/www/app
+        command: [ "/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf" ]
+
+    nginx:
+        build:
+            context: ./
+            dockerfile: docker/nginx/Dockerfile
+        volumes:
+            - ./docker/nginx/nginx_proxy.conf:/etc/nginx/conf.d/nginx_proxy.conf:ro
+            - ./:/var/www/app
+        depends_on:
+            - php-fpm
+        networks:
+            - default
+        ports:
+            - '8080:80'
+
+    mysql:
+        image: 'mysql/mysql-server:8.0'
+        ports:
+            - '${FORWARD_DB_PORT:-3306}:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+        volumes:
+            - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+        networks:
+            - sail
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
+            retries: 3
+            timeout: 5s
