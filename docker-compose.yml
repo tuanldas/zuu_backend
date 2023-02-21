@@ -1,4 +1,16 @@
 services:
+  nginx:
+    build:
+      context: ./
+      dockerfile: docker/nginx/Dockerfile
+    volumes:
+      - ./docker/nginx/nginx_proxy.conf:/etc/nginx/conf.d/nginx_proxy.conf:ro
+      - ./:/var/www/app
+    depends_on:
+      - php-fpm
+    networks:
+      - default
+
   php-fpm:
     build:
       context: ./
@@ -20,18 +32,6 @@ services:
       - mysql
     networks:
       - default
-
-    nginx:
-        build:
-            context: ./
-            dockerfile: docker/nginx/Dockerfile
-        volumes:
-            - ./docker/nginx/nginx_proxy.conf:/etc/nginx/conf.d/nginx_proxy.conf:ro
-            - ./:/var/www/app
-        depends_on:
-            - php-fpm
-        networks:
-            - default
 
   mysql:
     build:
