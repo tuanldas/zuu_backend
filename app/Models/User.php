@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\User\LoginTypeEnums;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,14 +31,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function createToken(string $name, array $abilities = ['*'], DateTimeInterface $expiresAt = null)
+    public function createTokenWithPassword(string $name, array $abilities = ['*'], DateTimeInterface $expiresAt = null): NewAccessToken
     {
         $token = $this->tokens()->create([
             'name' => $name,
             'token' => hash('sha256', $plainTextToken = Str::random(40)),
             'abilities' => $abilities,
             'expires_at' => $expiresAt,
-            ''
+            'grant_type' => LoginTypeEnums::Password
         ]);
 
         return new NewAccessToken($token, $token->getKey().'|'.$plainTextToken);
