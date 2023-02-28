@@ -1,0 +1,10 @@
+openapi: 3.0.3
+info:
+  title: Zuu REST API
+  version: 1.0.0
+servers:
+  - url: localhost:8080/api
+paths:
+  /login:
+    post:
+
