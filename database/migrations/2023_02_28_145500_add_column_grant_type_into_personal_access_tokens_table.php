@@ -18,10 +18,6 @@ return new class extends Migration {
                 $table->foreign('grant_type')->references('id')->on('type_login_token');
             });
         }
-        //function (Blueprint $table) {
-        //            $table->bigIncrements('grant_type')->unsigned();
-        //            $table->foreign('grant_type')->references('id')->on('type_login_token');
-        //        }
     }
 
     /**
