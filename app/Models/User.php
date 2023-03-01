@@ -31,14 +31,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function createTokenWithPassword(string $name, array $abilities = ['*'], DateTimeInterface $expiresAt = null): NewAccessToken
+    public function createTokenWithTypePassword(string $name, array $abilities = ['*'], DateTimeInterface $expiresAt = null): NewAccessToken
     {
         $token = $this->tokens()->create([
             'name' => $name,
             'token' => hash('sha256', $plainTextToken = Str::random(40)),
             'abilities' => $abilities,
             'expires_at' => $expiresAt,
-            'grant_type' => LoginTypeEnums::Password
+            'grant_type' => LoginTypeEnums::Password->value
         ]);
 
         return new NewAccessToken($token, $token->getKey().'|'.$plainTextToken);
