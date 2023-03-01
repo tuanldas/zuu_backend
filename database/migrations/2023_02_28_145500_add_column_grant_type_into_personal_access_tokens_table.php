@@ -14,8 +14,7 @@ return new class extends Migration {
     {
         if (!Schema::hasColumn('personal_access_tokens', 'grant_type')) {
             Schema::table('personal_access_tokens', function (Blueprint $table) {
-                $table->bigInteger('grant_type')->unsigned();
-                $table->foreign('grant_type')->references('id')->on('type_login_token');
+                $table->string('grant_type', 10)->after('expires_at');
             });
         }
     }
