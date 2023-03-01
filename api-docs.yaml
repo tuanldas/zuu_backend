@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.0.9
 info:
   title: Zuu REST API
   version: 1.0.0
@@ -7,4 +7,43 @@ servers:
 paths:
   /login:
     post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account:
+                  type: string
+                  required: true
+                action_type:
+                  type: string
+                  required: true
+                  example: password
+                password:
+                  type: string
+                  required: true
+      responses:
+        '200':
+          description: Một mảng các object thông báo
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Access Token'
 
+components:
+  schemas:
+    Access Token:
+      type: object
+      properties:
+        access_token:
+          type: string
+          required: true
+        expires_in:
+          type: integer
+          required: true
+        token_type:
+          type: string
+          required: true
