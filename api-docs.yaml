@@ -16,10 +16,6 @@ paths:
                 account:
                   type: string
                   required: true
-                action_type:
-                  type: string
-                  required: true
-                  example: password
                 password:
                   type: string
                   required: true
@@ -43,7 +39,4 @@ components:
           required: true
         expires_in:
           type: integer
-          required: true
-        token_type:
-          type: string
           required: true

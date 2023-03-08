@@ -8,12 +8,8 @@ trait UserHelpers
 {
     public function createUser(): User
     {
-        $user = new User([
-            'name' => 'UserTest',
-            'email' => 'test@gmail.com',
-            'password' => bcrypt('123123'),
+        return User::factory()->create([
+            'password' => bcrypt('123123')
         ]);
-        $user->save();
-        return $user;
     }
 }

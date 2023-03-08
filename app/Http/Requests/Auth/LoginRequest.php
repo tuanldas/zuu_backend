@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Requests\auth;
+namespace App\Http\Requests\Auth;
 
-use App\Enums\User\LoginTypeEnums;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Enum;
 
 class LoginRequest extends FormRequest
 {
@@ -17,15 +15,7 @@ class LoginRequest extends FormRequest
     {
         return [
             "account" => ["required", "email"],
-            "action_type" => ["required"],
             "password" => "required"
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'password.required' => 'asdf'
         ];
     }
 }

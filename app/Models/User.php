@@ -33,7 +33,7 @@ class User extends Authenticatable
         return ['uuid'];
     }
 
-    public function createTokenWithTypePassword(string $name, array $abilities = ['*'], DateTimeInterface $expiresAt = null): NewAccessToken
+    public function createTokenWithTypePassword(string $name, DateTimeInterface $expiresAt = null, array $abilities = ['*']): NewAccessToken
     {
         $token = $this->tokens()->create([
             'name' => $name,
@@ -42,7 +42,6 @@ class User extends Authenticatable
             'expires_at' => $expiresAt,
             'grant_type' => LoginTypeEnums::Password->value
         ]);
-
-        return new NewAccessToken($token, $token->getKey().'|'.$plainTextToken);
+        return new NewAccessToken($token, $token->getKey() . '|' . $plainTextToken);
     }
 }

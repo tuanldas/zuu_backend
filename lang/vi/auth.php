@@ -15,5 +15,6 @@ return [
 
     'failed' => 'Sai email hoặc mật khẩu',
     'password' => 'Mật khẩu không hợp lệ',
-    'throttle' => 'Bạn đăng nhập sai quá nhiều. Vui lòng thử lại sau :minutes phút ',
+    'throttle' => 'Bạn đăng nhập sai quá nhiều. Vui lòng thử lại sau :minutes phút',
+    'invalid_user_credentials' => 'Thông tin đăng nhập không hợp lệ',
 ];

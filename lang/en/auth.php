@@ -16,5 +16,5 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Password attempts exceeded. Account frozen for :minutes minutes..',
-
+    'invalid_user_credentials' => 'Invalid user credentials',
 ];
