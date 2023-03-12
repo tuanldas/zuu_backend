@@ -41,8 +41,8 @@ services:
       timeout: 5s
     networks:
       - default
-
-volumes:
-  mysql_data:
-    name: ${VOLUME_MYSQL_LIB}
-    external: true
+#
+#volumes:
+#  mysql_data:
+#    name: ${VOLUME_MYSQL_LIB}
+#    external: true
