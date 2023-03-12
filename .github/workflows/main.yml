@@ -10,11 +10,8 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Copy docker compose
         run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml');"
-#      - name: Set alias sail
-#        shell: bash
-#        run: |
-#          echo 'shopt -s expand_aliases'  > ~/.bashrc
-#          echo "alias sail='./vendor/bin/sail '" >> ~/.bashrc
+      - name: Build docker image
+        run: docker compose build
 #      - name: Up sail
 #        shell: bash
 #        run: |
