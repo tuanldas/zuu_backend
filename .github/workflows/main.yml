@@ -1,0 +1,26 @@
+name: Zuu backend
+on: push
+jobs:
+  Testcase:
+    runs-on: ubuntu-latest
+    name: Testcase
+    steps:
+      - uses: actions/checkout@v3
+      - name: Copy .envnan
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Install Dependencies
+        run: docwww/html" -w /var/www/html laravelsail/php81-composer:latest composer install  -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
+#      - name: Set alias sail
+#        shell: bash
+#        run: |
+#          echo 'shopt -s expand_aliases'  > ~/.bashrc
+#          echo "alias sail='./vendor/bin/sail '" >> ~/.bashrc
+#      - name: Up sail
+#        shell: bash
+#        run: |
+#          source ~/.bashrc
+#          sail up -d
+#      - name: Run test
+#        run: |
+#          source ~/.bashrc
+#          sail test
