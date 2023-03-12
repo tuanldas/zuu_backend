@@ -12,6 +12,8 @@ jobs:
         run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml');"
       - name: Build docker image
         run: docker compose build
+      - name: Create docker volume
+        run : docker volume create zuu_backend_mysql
       - name: Start docker compose
         run: docker compose up -d
       - name: Run test
