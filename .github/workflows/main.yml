@@ -1,7 +1,7 @@
 name: Zuu backend
 on: push
 jobs:
-  Testcase:
+  Test:
     runs-on: ubuntu-latest
     name: Testcase
     steps:
@@ -12,6 +12,8 @@ jobs:
         run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml');"
       - name: Build docker image
         run: docker compose build
+      - name: Run test
+        run: docker compose exec -it php-fpm php artisan test
 #      - name: Up sail
 #        shell: bash
 #        run: |
