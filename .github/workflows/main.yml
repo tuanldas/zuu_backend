@@ -6,10 +6,10 @@ jobs:
     name: Testcase
     steps:
       - uses: actions/checkout@v3
-      - name: Copy .envnan
+      - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - name: Install Dependencies
-        run: docwww/html" -w /var/www/html laravelsail/php81-composer:latest composer install  -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
+      - name: Copy docker compose
+        run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml')"
 #      - name: Set alias sail
 #        shell: bash
 #        run: |
