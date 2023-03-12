@@ -9,7 +9,7 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Copy docker compose
-        run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml')"
+        run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml');"
 #      - name: Set alias sail
 #        shell: bash
 #        run: |
