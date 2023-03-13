@@ -20,13 +20,7 @@ jobs:
         run: docker compose exec -it php-fpm composer install
 
       - name: Composer install
-        run: docker compose exec -it php-fpm chown -R "$USER":www-data storage
-
-      - name: Composer install
         run: docker compose exec -it php-fpm chmod -R 775 storage
-
-      - name: Composer install
-        run: docker compose exec -it php-fpm chown -R "$USER":www-data bootstrap/cache
 
       - name: Composer install
         run: docker compose exec -it php-fpm chmod -R 775 bootstrap/cache
