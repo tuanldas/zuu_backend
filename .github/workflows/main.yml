@@ -7,13 +7,27 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+        run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
       - name: Copy docker compose
         run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml');"
       - name: Build docker image
         run: docker compose build
+      - name: Create docker volume
+        run : docker volume create zuu_backend_mysql
       - name: Start docker compose
         run: docker compose up -d
+      - name: Composer install
+        run: docker compose exec -it php-fpm composer install
+      - name: Decentralization of storage
+        run: docker compose exec -it php-fpm chmod -R 775 storage
+      - name: Decentralization of bootstrap
+        run: docker compose exec -it php-fpm chmod -R 775 bootstrap/cache
+      - name: Decentralization of vendor
+        run: docker compose exec -it php-fpm chmod -R 777 vendor
+      - name: Clear cache
+        run: docker compose exec -it php-fpm php artisan cache:clear
+      - name: Config cache
+        run: docker compose exec -it php-fpm php artisan config:clear
       - name: Run test
         run: docker compose exec -it php-fpm php artisan test
       - name: After script
