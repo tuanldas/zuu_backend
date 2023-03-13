@@ -16,6 +16,8 @@ jobs:
         run : docker volume create zuu_backend_mysql
       - name: Start docker compose
         run: docker compose up -d
+      - name: Start docker compose
+        run: docker compose ps
       - name: Composer install
         run: docker compose exec -it php-fpm composer install
       - name: Composer install
