@@ -10,20 +10,16 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
       - name: Copy docker compose
         run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml');"
-      - name: Copy .env
-        run: ls -al
       - name: Build docker image
         run: docker compose build
       - name: Create docker volume
         run : docker volume create zuu_backend_mysql
       - name: Start docker compose
         run: docker compose up -d
-      - name: Start docker compose
-        run: docker compose ps -a
-      - name: Start docker compose
-        run: docker compose logs
       - name: Composer install
         run: docker compose exec -it php-fpm composer install
+      - name: Start docker compose
+        run: docker compose ps -a
       - name: Composer install
         run: docker compose exec -it php-fpm php artisan migrate --force
       - name: Run test
