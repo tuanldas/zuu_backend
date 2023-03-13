@@ -1,0 +1,6 @@
+services:
+  mysql:
+    healthcheck:
+      test: mysql -u ${DB_USERNAME} -p${DB_PASSWORD} -e "use ${DB_DATABASE}"
+      retries: 3
+      timeout: 5s

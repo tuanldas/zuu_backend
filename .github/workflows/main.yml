@@ -9,7 +9,7 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
       - name: Copy docker compose
-        run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml');"
+        run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-test.yml', 'docker-compose.override.yml');"
       - name: Build docker image
         run: docker compose build
       - name: Create docker volume
@@ -28,6 +28,8 @@ jobs:
         run: docker compose exec -it php-fpm php artisan cache:clear
       - name: Config cache
         run: docker compose exec -it php-fpm php artisan config:clear
+      - name: Sleep for 30 seconds
+        run: sleep 30s
       - name: Run test
         run: docker compose exec -it php-fpm php artisan test
       - name: After script
