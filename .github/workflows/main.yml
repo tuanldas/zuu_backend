@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+        run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
       - name: Copy docker compose
         run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml');"
       - name: Copy .env
