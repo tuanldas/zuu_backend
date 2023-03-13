@@ -7,11 +7,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Copy .env
-        run: ls -al
-      - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Copy docker compose
         run: php -r "file_exists('docker-compose.override.yml') || copy('docker-compose-local.yml', 'docker-compose.override.yml');"
+      - name: Copy .env
+        run: ls -al
       - name: Build docker image
         run: docker compose build
       - name: Create docker volume
@@ -21,7 +21,7 @@ jobs:
       - name: Start docker compose
         run: docker compose ps -a
       - name: Start docker compose
-        run: docker compose logs -f
+        run: docker compose logs
 #      - name: Composer install
 #        run: docker compose exec -it php-fpm composer install
 #      - name: Composer install
