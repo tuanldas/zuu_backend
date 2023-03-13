@@ -13,7 +13,6 @@ class LoginTest extends TestCase
 
     public function testLoginSuccess()
     {
-        dd(DB::connection()->getPdo());
         $user = $this->createUser();
         $response = $this->withHeaders([
             'Accept' => 'application/json'
