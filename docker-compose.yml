@@ -19,7 +19,8 @@ services:
       - ./:/var/www/app
     command: [ "/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf" ]
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     networks:
       - default
 
