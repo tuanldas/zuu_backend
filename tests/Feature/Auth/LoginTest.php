@@ -3,6 +3,7 @@
 namespace Tests\Feature\Auth;
 
 use Illuminate\Database\PDO\Concerns\ConnectsToDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\Helpers\UserHelpers;
 use Tests\TestCase;
 
@@ -12,6 +13,7 @@ class LoginTest extends TestCase
 
     public function testLoginSuccess()
     {
+        dd(DB::connection()->getPdo());
         $user = $this->createUser();
         $response = $this->withHeaders([
             'Accept' => 'application/json'
