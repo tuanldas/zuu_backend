@@ -12,6 +12,15 @@ class LoginTest extends TestCase
 
     public function testLoginSuccess()
     {
+        dd(
+            env('DB_CONNECTION'),
+            env('DB_HOST'),
+            env('FORWARD_DB_PORT'),
+            env('DB_PORT'),
+            env('DB_DATABASE'),
+            env('DB_USERNAME'),
+            env('DB_PASSWORD'),
+        );
         $user = $this->createUser();
         $response = $this->withHeaders([
             'Accept' => 'application/json'
