@@ -22,15 +22,11 @@ jobs:
         run: docker compose ps -a
       - name: Start docker compose
         run: docker compose logs
-#      - name: Composer install
-#        run: docker compose exec -it php-fpm composer install
-#      - name: Composer install
-#        run: docker compose exec -it php-fpm php artisan cache:clear
-#      - name: Composer install
-#        run: docker compose exec -it php-fpm php artisan config:clear
-#      - name: Composer install
-#        run: docker compose exec -it php-fpm php artisan migrate --force
-#      - name: Run test
-#        run: docker compose exec -it php-fpm php artisan test
-#      - name: After script
-#        run: docker compose -v --rmi all
+      - name: Composer install
+        run: docker compose exec -it php-fpm composer install
+      - name: Composer install
+        run: docker compose exec -it php-fpm php artisan migrate --force
+      - name: Run test
+        run: docker compose exec -it php-fpm php artisan test
+      - name: After script
+        run: docker compose -v --rmi all
