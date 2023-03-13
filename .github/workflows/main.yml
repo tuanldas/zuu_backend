@@ -21,7 +21,7 @@ jobs:
       - name: Start docker compose
         run: docker compose ps -a
       - name: D
-        run: docker compose exec -it mysql mysql -u root -proot
+        run: docker compose exec -i mysql mysql -u root -proot  <<< "select database;"
 #      - name: Run test
 #        run: docker compose exec -it php-fpm php artisan test
 #      - name: After script
