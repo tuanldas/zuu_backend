@@ -18,6 +18,8 @@ jobs:
         run: docker compose up -d
       - name: Start docker compose
         run: docker compose ps -a
+      - name: Start docker compose
+        run: docker compose logs -f
 #      - name: Composer install
 #        run: docker compose exec -it php-fpm composer install
 #      - name: Composer install
