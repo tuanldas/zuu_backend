@@ -23,7 +23,7 @@ services:
     networks:
       - default
     healthcheck:
-      test: mysqladmin ping -h 127.0.0.1 -u ${DB_USERNAME} --password=${DB_PASSWORD}
+      test: mysqladmin ping -h mysql -u ${DB_USERNAME} --password=${DB_PASSWORD}
       start_period: 5s
       interval: 5s
       timeout: 5s
