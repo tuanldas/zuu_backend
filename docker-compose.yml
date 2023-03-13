@@ -28,6 +28,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 55
+
   mysql:
     build:
       context: .
