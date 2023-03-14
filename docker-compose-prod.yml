@@ -4,7 +4,7 @@ services:
     networks:
       - publish
 
-volumes:
-  mysql_data:
-    name: ${VOLUME_MYSQL_LIB}
+networks:
+  publish:
     external: true
+    name: ${NGINX_CLOUD_NETWORK}
