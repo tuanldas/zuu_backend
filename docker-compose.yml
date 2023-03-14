@@ -38,7 +38,18 @@ services:
     networks:
       - default
 
+  redis:
+    image: redis:alpine
+    restart: always
+    volumes:
+      - redis_data:/data
+    networks:
+      - default
+
 volumes:
   mysql_data:
     name: ${VOLUME_MYSQL_LIB}
+    external: true
+  redis_data:
+    name: ${VOLUME_REDIS_DATA}
     external: true

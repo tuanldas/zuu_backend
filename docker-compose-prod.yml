@@ -1,0 +1,10 @@
+services:
+  nginx:
+    restart: always
+    networks:
+      - publish
+
+volumes:
+  mysql_data:
+    name: ${VOLUME_MYSQL_LIB}
+    external: true
