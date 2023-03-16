@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function login(LoginRequest $loginRequest)
     {
         $certificate = [
-            'email' => $loginRequest->account,
+            'email' => $loginRequest->username,
             'password' => $loginRequest->password,
         ];
         if (Auth::attempt($certificate)) {
