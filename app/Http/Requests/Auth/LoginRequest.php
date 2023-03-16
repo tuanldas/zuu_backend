@@ -11,6 +11,11 @@ class LoginRequest extends FormRequest
         return true;
     }
 
+    public function wantsJson()
+    {
+        return true;
+    }
+
     public function rules(): array
     {
         return [
