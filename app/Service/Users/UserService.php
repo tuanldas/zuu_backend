@@ -13,7 +13,7 @@ class UserService implements UserServiceInterface
         $this->userRepository = $userRepository;
     }
 
-    public function getProfileUser(int $uuid): User
+    public function getProfileUser($uuid): User
     {
         return $this->userRepository->getProfileUser($uuid, [
             'first_name',
