@@ -6,6 +6,7 @@ use App\Enums\User\LoginTypeEnums;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -15,6 +16,7 @@ use Laravel\Sanctum\NewAccessToken;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
+
     protected $fillable = [
         'name',
         'email',
@@ -43,5 +45,10 @@ class User extends Authenticatable
             'grant_type' => LoginTypeEnums::Password->value
         ]);
         return new NewAccessToken($token, $token->getKey() . '|' . $plainTextToken);
+    }
+
+    public function userProfile(): HasOne
+    {
+        return $this->hasOne(UserProfile::class, 'user_id', 'id');
     }
 }
