@@ -13,7 +13,8 @@ class GetProfileUsersTest extends TestCase
     {
         $user = $this->createUser();
         $response = $this->withHeaders([
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer ' . $user->createTokenWithTypePassword($user->email)->plainTextToken
         ])->get('/api/users/' . $user->uuid)
             ->assertStatus(200);
         $profileUser = json_decode($response->getContent());
@@ -30,10 +31,21 @@ class GetProfileUsersTest extends TestCase
 
     public function testCannotGetProfileUserWhenUuidNotFound()
     {
+        $user = $this->createUser();
         $response = $this->withHeaders([
-            'Accept' => 'application/json'
-        ])->get('/api/users/98bb6f8b-3330-4299-a21a-8803f9a7c9da')
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer ' . $user->createTokenWithTypePassword($user->email)->plainTextToken
+        ])->get('/api/users/' . $user . 'a')
             ->assertStatus(404);
         $this->assertEquals(__('language.not_found'), json_decode($response->getContent())->message);
+    }
+    public function testCannotGetProfileUserWhenAccessTokenNull()
+    {
+        $user = $this->createUser();
+        $response = $this->withHeaders([
+            'Accept' => 'application/json'
+        ])->get('/api/users/' . $user . 'a')
+            ->assertStatus(401);
+        $this->assertEquals(__('language.unauthenticated'), json_decode($response->getContent())->message);
     }
 }

@@ -24,10 +24,11 @@ Route::get('/test', function () {
    \App\Models\UserProfile::factory()->create([
        'user_id' => $user->id
    ]);
-
 });
-Route::prefix('/users/{uuid}')
-    ->controller(UserController::class)
-    ->group(function () {
-        Route::get('/', 'getProfileUser');
-    });
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('/users/{uuid}')
+        ->controller(UserController::class)
+        ->group(function () {
+            Route::get('/', 'getProfileUser');
+        });
+});

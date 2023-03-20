@@ -2,8 +2,10 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use function PHPUnit\Framework\throwException;
 
 class Handler extends ExceptionHandler
 {
@@ -15,7 +17,6 @@ class Handler extends ExceptionHandler
     protected $levels = [
         //
     ];
-
     /**
      * A list of the exception types that are not reported.
      *
@@ -24,7 +25,6 @@ class Handler extends ExceptionHandler
     protected $dontReport = [
         //
     ];
-
     /**
      * A list of the inputs that are never flashed to the session on validation exceptions.
      *
@@ -43,7 +43,13 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-        });
+        $this->reportable(function (Throwable $e) {});
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        return $this->shouldReturnJson($request, $exception)
+            ? response()->json(['message' => __('language.unauthenticated')], 401)
+            : redirect()->guest($exception->redirectTo() ?? route('login'));
     }
 }
