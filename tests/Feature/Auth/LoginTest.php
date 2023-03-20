@@ -16,7 +16,7 @@ class LoginTest extends TestCase
         $response = $this->withHeaders([
             'Accept' => 'application/json'
         ])->post('/api/auth/login', [
-            'account' => $user->email,
+            'username' => $user->email,
             'password' => 123123,
         ])
             ->assertStatus(200);
@@ -25,17 +25,17 @@ class LoginTest extends TestCase
         $this->assertNotNull($contentRequest->expires_in);
     }
 
-    public function testLoginFailedWhenAccountNull()
+    public function testLoginFailedWhenUsernameNull()
     {
         $response = $this->withHeaders([
             'Accept' => 'application/json'
         ])->post('/api/auth/login', [
-            'account' => null,
+            'username' => null,
             'password' => 123123,
         ])
             ->assertStatus(422);
         $contentRequest = json_decode($response->getContent());
-        $this->assertEquals(__('validation.required', ['attribute' => 'account']), $contentRequest->message);
+        $this->assertEquals(__('validation.required', ['attribute' => 'username']), $contentRequest->message);
     }
 
     public function testLoginFailedWhenPasswordNull()
@@ -44,7 +44,7 @@ class LoginTest extends TestCase
         $response = $this->withHeaders([
             'Accept' => 'application/json'
         ])->post('/api/auth/login', [
-            'account' => $user->email,
+            'username' => $user->email,
             'password' => null,
         ])
             ->assertStatus(422);
@@ -58,7 +58,7 @@ class LoginTest extends TestCase
         $response = $this->withHeaders([
             'Accept' => 'application/json'
         ])->post('/api/auth/login', [
-            'account' => $user->email,
+            'username' => $user->email,
             'password' => 11111,
         ])
             ->assertStatus(401);
