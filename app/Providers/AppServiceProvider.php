@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\PersonalAccessToken;
+use App\Repositories\Users\UserRepository;
+use App\Repositories\Users\UserRepositoryInterface;
 use App\Service\Users\UserService;
 use App\Service\Users\UserServiceInterface;
 use App\UseCase\Users\UserUseCase;
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->registerUseCases();
         $this->registerServices();
+        $this->registerRepositories();
     }
 
     protected function registerUseCases()
@@ -36,6 +39,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             UserServiceInterface::class,
             UserService::class
+        );
+    }
+
+    protected function registerRepositories()
+    {
+        $this->app->singleton(
+            UserRepositoryInterface::class,
+            UserRepository::class
         );
     }
 
