@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('about')->nullable();
             $table->string('designation', 30)->nullable();
             $table->string('website', 100)->nullable();
-            $table->string('phone', 15)->nullable();
+            $table->string('phone', 20)->nullable();
             $table->timestamp('joining_date')->nullable();
             $table->timestamps();
         });
