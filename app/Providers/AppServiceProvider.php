@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\PersonalAccessToken;
+use App\Repositories\Eloquent\EloquentRepository;
+use App\Repositories\Eloquent\EloquentRepositoryInterface;
 use App\Repositories\Users\UserRepository;
 use App\Repositories\Users\UserRepositoryInterface;
 use App\Service\Users\UserService;
@@ -44,6 +46,10 @@ class AppServiceProvider extends ServiceProvider
 
     protected function registerRepositories()
     {
+        $this->app->singleton(
+            EloquentRepositoryInterface::class,
+            EloquentRepository::class
+        );
         $this->app->singleton(
             UserRepositoryInterface::class,
             UserRepository::class
