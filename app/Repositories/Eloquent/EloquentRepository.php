@@ -52,5 +52,10 @@ abstract class EloquentRepository implements EloquentRepositoryInterface
         return $this->model->find($id, $columns);
     }
 
-
+    public function findByUuid($uuid, $columns = ['*'])
+    {
+        return $this->model->where('uuid', $uuid)
+            ->select($columns)
+            ->first();
+    }
 }

@@ -16,4 +16,6 @@ interface EloquentRepositoryInterface
     public function delete($id);
 
     public function find($id, $columns = ['*']);
+
+    public function findByUuid($uuid,  $columns = ['*']);
 }
