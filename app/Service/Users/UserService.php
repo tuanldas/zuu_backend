@@ -1,10 +1,29 @@
 <?php
 
 namespace App\Service\Users;
+use App\Models\User;
+use App\Repositories\Users\UserRepositoryInterface;
+
 class UserService implements UserServiceInterface
 {
-    public function getProfileUser($uuid)
+    public UserRepositoryInterface $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
     {
-        // TODO: Implement getProfileUser() method.
+        $this->userRepository = $userRepository;
+    }
+
+    public function getProfileUser(int $uuid): User
+    {
+        return $this->userRepository->getProfileUser($uuid, [
+            'first_name',
+            'last_name',
+            'designation',
+            'website',
+            'phone',
+            'email',
+            'joining_date',
+            'about',
+        ]);
     }
 }

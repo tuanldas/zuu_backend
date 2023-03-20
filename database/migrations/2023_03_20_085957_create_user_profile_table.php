@@ -19,10 +19,11 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('first_name', 20);
             $table->string('last_name', 20);
-            $table->text('about');
-            $table->string('designation', 30);
-            $table->string('website', 100);
-            $table->string('phone', 15);
+            $table->text('about')->nullable();
+            $table->string('designation', 30)->nullable();
+            $table->string('website', 100)->nullable();
+            $table->string('phone', 15)->nullable();
+            $table->timestamp('joining_date')->nullable();
             $table->timestamps();
         });
     }

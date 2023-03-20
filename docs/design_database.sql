@@ -49,16 +49,17 @@ drop table if exists personal_access_tokens;
 create table personal_access_tokens
 (
     id             bigint unsigned auto_increment primary key,
-    tokenable_type varchar(255)    not null,
+    tokenable_type varchar(255) not null,
     tokenable_id   bigint unsigned not null,
-    name           varchar(255)    not null,
-    token          varchar(64)     not null,
-    abilities      text            null,
-    last_used_at   timestamp       null,
-    expires_at     timestamp       null,
-    grant_type     varchar(10)     not null,
-    created_at     timestamp       null,
-    updated_at     timestamp       null,
+    name           varchar(255) not null,
+    token          varchar(64)  not null,
+    abilities      text null,
+    last_used_at   timestamp null,
+    expires_at     timestamp null,
+    grant_type     varchar(10)  not null,
+    joining_date   timestamp,
+    created_at     timestamp null,
+    updated_at     timestamp null,
     constraint personal_access_tokens_token_unique unique (token)
 );
 
