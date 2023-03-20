@@ -29,6 +29,24 @@ paths:
                 items:
                   $ref: '#/components/schemas/Access Token'
 
+  /get-profile-user/{user-id}:
+    get:
+      parameters:
+        -
+          name: user-id
+          in: path
+          description: Id người dùng
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Thông tin người dùng
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
 components:
   schemas:
     Access Token:
@@ -40,3 +58,24 @@ components:
         expires_in:
           type: integer
           required: true
+
+    User:
+      type: object
+      items:
+        properties:
+          first_name:
+            type: string
+          last_name:
+            type: string
+          designation:
+            type: string
+          website:
+            type: string
+          phone:
+            type: string
+          email:
+            type: string
+          joining_date:
+            type: string
+          about:
+            type: string
