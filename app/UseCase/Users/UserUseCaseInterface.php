@@ -1,7 +1,7 @@
 <?php
 
 namespace App\UseCase\Users;
-interface
-UserUseCaseInterface
+interface UserUseCaseInterface
 {
+    function getProfileUser(string $uuid);
 }

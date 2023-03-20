@@ -10,18 +10,6 @@ use function Symfony\Component\String\u;
 
 trait UserHelpers
 {
-    public function newUserService(): UserService
-    {
-        return new UserService(
-            $this->newUserRepository()
-        );
-    }
-
-    public function newUserRepository(): UserRepository
-    {
-        return new UserRepository();
-    }
-
     public function createUser(): User
     {
         $user = User::factory()->create([
