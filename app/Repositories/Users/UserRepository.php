@@ -14,6 +14,7 @@ class UserRepository extends EloquentRepository implements UserRepositoryInterfa
     public function getProfileUser($uuid, $columns = ['*'])
     {
         return $this->model
+            ->join('user_profile', 'user_profile.user_id', '=', 'users.id')
             ->where('uuid', $uuid)
             ->select($columns)
             ->first();

@@ -16,6 +16,7 @@ class UserService implements UserServiceInterface
     public function getProfileUser($uuid): User
     {
         return $this->userRepository->getProfileUser($uuid, [
+            'uuid',
             'first_name',
             'last_name',
             'designation',
