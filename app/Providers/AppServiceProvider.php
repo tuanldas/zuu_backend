@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\PersonalAccessToken;
+use App\Service\Users\UserService;
+use App\Service\Users\UserServiceInterface;
 use App\UseCase\Users\UserUseCase;
 use App\UseCase\Users\UserUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
@@ -17,14 +19,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->registerUseCase();
+        $this->registerUseCases();
+        $this->registerServices();
     }
 
-    protected function registerUseCase()
+    protected function registerUseCases()
     {
         $this->app->singleton(
             UserUseCaseInterface::class,
             UserUseCase::class
+        );
+    }
+
+    protected function registerServices()
+    {
+        $this->app->singleton(
+            UserServiceInterface::class,
+            UserService::class
         );
     }
 
