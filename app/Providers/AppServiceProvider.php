@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Http\UseCase\Users\UserUseCase;
-use App\Http\UseCase\Users\UserUseCaseInterface;
 use App\Models\PersonalAccessToken;
+use App\UseCase\Users\UserUseCase;
+use App\UseCase\Users\UserUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
 
