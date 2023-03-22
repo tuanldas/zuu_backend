@@ -19,12 +19,6 @@ Route::prefix('/auth')
     ->group(function () {
         Route::post('/login', 'login');
     });
-Route::get('/test', function () {
-   $user = \App\Models\User::factory()->create();
-   \App\Models\UserProfile::factory()->create([
-       'user_id' => $user->id
-   ]);
-});
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/users/{uuid}')
         ->controller(UserController::class)

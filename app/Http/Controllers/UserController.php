@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\UseCase\Users\UserUseCaseInterface;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
