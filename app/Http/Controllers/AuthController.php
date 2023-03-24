@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Nonstandard\Uuid;
 
@@ -22,8 +23,8 @@ class AuthController extends Controller
             $user = Auth::user();
             $token = $user->createTokenWithTypePassword($user->uuid, Carbon::now()->addSecond(config('custom.token_login_expires_at')));
             return response()->json([
-                'uuid' => $user->uuid,
-                "access_token" => $token->plainTextToken,
+                'uuid' => Crypt::encrypt($user->uuid),
+                "access_token" => Crypt::encrypt($token->plainTextToken),
                 "expires_in" => (int)config('custom.token_login_expires_at'),
             ]);
         }
