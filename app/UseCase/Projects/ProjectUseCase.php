@@ -11,4 +11,8 @@ class ProjectUseCase implements ProjectUseCaseInterface
     {
         $this->projectService = $projectService;
     }
+
+    public function getProjectsByUserId($userId)
+    {
+    }
 }
