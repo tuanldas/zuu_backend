@@ -25,6 +25,7 @@ class UserService implements UserServiceInterface
             'email',
             'joining_date',
             'about',
+            'avatar'
         ]);
     }
 }
