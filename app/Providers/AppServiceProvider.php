@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\PersonalAccessToken;
 use App\Repositories\Eloquent\EloquentRepository;
 use App\Repositories\Eloquent\EloquentRepositoryInterface;
+use App\Repositories\Projects\ProjectRepository;
+use App\Repositories\Projects\ProjectRepositoryInterface;
 use App\Repositories\Users\UserRepository;
 use App\Repositories\Users\UserRepositoryInterface;
 use App\Service\Projects\ProjectService;
@@ -59,6 +61,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             UserRepositoryInterface::class,
             UserRepository::class
+        );
+        $this->app->singleton(
+            ProjectRepositoryInterface::class,
+            ProjectRepository::class
         );
     }
 
