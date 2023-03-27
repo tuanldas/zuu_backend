@@ -7,6 +7,8 @@ use App\Repositories\Eloquent\EloquentRepository;
 use App\Repositories\Eloquent\EloquentRepositoryInterface;
 use App\Repositories\Users\UserRepository;
 use App\Repositories\Users\UserRepositoryInterface;
+use App\Service\Projects\ProjectService;
+use App\Service\Projects\ProjectServiceInterface;
 use App\Service\Users\UserService;
 use App\Service\Users\UserServiceInterface;
 use App\UseCase\Users\UserUseCase;
@@ -41,6 +43,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             UserServiceInterface::class,
             UserService::class
+        );
+        $this->app->singleton(
+            ProjectServiceInterface::class,
+            ProjectService::class
         );
     }
 
