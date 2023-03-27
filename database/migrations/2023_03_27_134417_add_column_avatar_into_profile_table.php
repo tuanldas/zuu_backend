@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('user_profile', function (Blueprint $table) {
-            $table->integer('avatar');
+            $table->string('avatar');
         });
     }
 
