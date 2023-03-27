@@ -16,6 +16,7 @@ class UserProfileFactory extends Factory
             'website' => fake()->url,
             'phone' => fake()->phoneNumber,
             'joining_date' => fake()->date,
+            'avatar' => fake()->image
         ];
     }
 }
