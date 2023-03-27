@@ -74,6 +74,16 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Project"
+        401:
+          description: Không có quyền truy cập nguồn dữ liệu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
 components:
   schemas:
     Access Token:
