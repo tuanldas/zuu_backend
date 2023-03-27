@@ -23,8 +23,8 @@ class AuthController extends Controller
             $user = Auth::user();
             $token = $user->createTokenWithTypePassword($user->uuid, Carbon::now()->addSecond(config('custom.token_login_expires_at')));
             return response()->json([
-                'uuid' => Crypt::encrypt($user->uuid),
-                "access_token" => Crypt::encrypt($token->plainTextToken),
+                'uuid' => Crypt::encryptString($user->uuid),
+                "access_token" => Crypt::encryptString($token->plainTextToken),
                 "expires_in" => (int)config('custom.token_login_expires_at'),
             ]);
         }
