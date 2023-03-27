@@ -13,6 +13,8 @@ use App\Service\Projects\ProjectService;
 use App\Service\Projects\ProjectServiceInterface;
 use App\Service\Users\UserService;
 use App\Service\Users\UserServiceInterface;
+use App\UseCase\Projects\ProjectUseCase;
+use App\UseCase\Projects\ProjectUseCaseInterface;
 use App\UseCase\Users\UserUseCase;
 use App\UseCase\Users\UserUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
@@ -37,6 +39,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             UserUseCaseInterface::class,
             UserUseCase::class
+        );
+        $this->app->singleton(
+            ProjectUseCaseInterface::class,
+            ProjectUseCase::class
         );
     }
 
