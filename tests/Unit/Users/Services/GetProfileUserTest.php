@@ -4,6 +4,7 @@ namespace Tests\Unit\Users\Services;
 
 use App\Models\User;
 use App\Models\UserProfile;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tests\Helpers\UserHelpers;
 use Tests\TestCase;
 
@@ -27,9 +28,13 @@ class GetProfileUserTest extends TestCase
         $this->assertEquals($user->userProfile->about, $userProfile->about);
     }
 
-    public function testCannotGetProfileUserWhenUuidNotFound() {
+    public function testCannotGetProfileUserWhenUuidNotFound()
+    {
         $userService = $this->newUserService();
         $userProfile = $userService->getProfileUser('98bb6f8b-3330-4299-a21a-8803f9a7c9da');
+        $this->expectException(NotFoundHttpException::class);
         $this->assertNull($userProfile);
+        $this->expectExceptionCode(404);
+        $this->expectExceptionMessage(__('language.not_found'));
     }
 }
