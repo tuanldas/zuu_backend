@@ -5,10 +5,16 @@ namespace App\Providers;
 use App\Models\PersonalAccessToken;
 use App\Repositories\Eloquent\EloquentRepository;
 use App\Repositories\Eloquent\EloquentRepositoryInterface;
+use App\Repositories\Projects\ProjectRepository;
+use App\Repositories\Projects\ProjectRepositoryInterface;
 use App\Repositories\Users\UserRepository;
 use App\Repositories\Users\UserRepositoryInterface;
+use App\Service\Projects\ProjectService;
+use App\Service\Projects\ProjectServiceInterface;
 use App\Service\Users\UserService;
 use App\Service\Users\UserServiceInterface;
+use App\UseCase\Projects\ProjectUseCase;
+use App\UseCase\Projects\ProjectUseCaseInterface;
 use App\UseCase\Users\UserUseCase;
 use App\UseCase\Users\UserUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
@@ -34,6 +40,10 @@ class AppServiceProvider extends ServiceProvider
             UserUseCaseInterface::class,
             UserUseCase::class
         );
+        $this->app->singleton(
+            ProjectUseCaseInterface::class,
+            ProjectUseCase::class
+        );
     }
 
     protected function registerServices()
@@ -41,6 +51,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             UserServiceInterface::class,
             UserService::class
+        );
+        $this->app->singleton(
+            ProjectServiceInterface::class,
+            ProjectService::class
         );
     }
 
@@ -53,6 +67,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             UserRepositoryInterface::class,
             UserRepository::class
+        );
+        $this->app->singleton(
+            ProjectRepositoryInterface::class,
+            ProjectRepository::class
         );
     }
 

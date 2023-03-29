@@ -71,7 +71,7 @@ create table projects
     name         varchar(50)    not null,
     description  varchar(150),
     summary      text,
-    icon         varchar(255),
+    icon         varchar(255) not null ,
     is_favorites boolean default false,
     owner        bigint unsigned not null,
     status       varchar(10)    not null,

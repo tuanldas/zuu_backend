@@ -7,6 +7,8 @@ servers:
 paths:
   /login:
     post:
+      tags:
+        - Auth
       requestBody:
         content:
           application/json:
@@ -31,9 +33,10 @@ paths:
 
   /get-profile-user/{user-id}:
     get:
+      tags:
+        - Users
       parameters:
-        -
-          name: user-id
+        - name: user-id
           in: path
           description: Id người dùng
           required: true
@@ -46,6 +49,40 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
+
+  /projects:
+    get:
+      tags:
+        - Projects
+      parameters:
+        - name: page
+          in: query
+          description: Số trang cần lấy
+          schema:
+            type: number
+        - name: limit
+          in: query
+          description: Số dự án trong một trang
+          schema:
+            type: number
+      responses:
+        200:
+          description: Danh sách các dự án của người dùng
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+        401:
+          description: Không có quyền truy cập nguồn dữ liệu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
 
 components:
   schemas:
@@ -61,21 +98,53 @@ components:
 
     User:
       type: object
-      items:
-        properties:
-          first_name:
-            type: string
-          last_name:
-            type: string
-          designation:
-            type: string
-          website:
-            type: string
-          phone:
-            type: string
-          email:
-            type: string
-          joining_date:
-            type: string
-          about:
-            type: string
+      properties:
+        first_name:
+          type: string
+          required: true
+        last_name:
+          type: string
+          required: true
+        designation:
+          type: string
+        website:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+          required: true
+        joining_date:
+          type: string
+          required: true
+        about:
+          type: string
+        avatar:
+          type: string
+          required: true
+
+    Project:
+      type: object
+      properties:
+        uuid:
+          type: string
+          required: true
+        name:
+          type: string
+          required: true
+        description:
+          type: string
+        summary:
+          type: string
+        icon:
+          type: string
+          required: true
+        is_favorites:
+          type: string
+          required: true
+        status:
+          type: string
+          required: true
+        priority:
+          type: string
+          required: true

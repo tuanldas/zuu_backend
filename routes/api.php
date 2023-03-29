@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,10 @@ Route::middleware('auth:sanctum')->group(function () {
         ->controller(UserController::class)
         ->group(function () {
             Route::get('/', 'getProfileUser');
+        });
+    Route::prefix('/projects')
+        ->controller(ProjectController::class)
+        ->group(function () {
+            Route::get('/', 'getProjects');
         });
 });
