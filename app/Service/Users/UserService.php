@@ -13,7 +13,7 @@ class UserService implements UserServiceInterface
         $this->userRepository = $userRepository;
     }
 
-    public function getProfileUser($uuid): ?User
+    public function getProfileUser(string $uuid): ?User
     {
         return $this->userRepository->getProfileUser($uuid, [
             'uuid',
@@ -27,5 +27,10 @@ class UserService implements UserServiceInterface
             'about',
             'avatar'
         ]);
+    }
+
+    public function getUserByUserUUid(string $uuid)
+    {
+        return $this->userRepository->findByUuid($uuid);
     }
 }

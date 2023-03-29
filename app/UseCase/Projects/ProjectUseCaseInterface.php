@@ -3,5 +3,5 @@
 namespace App\UseCase\Projects;
 interface ProjectUseCaseInterface
 {
-    public function getProjectsByUserId($userId);
+    public function getProjectsByUserUUid($userUUid);
 }

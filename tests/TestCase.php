@@ -42,7 +42,8 @@ abstract class TestCase extends BaseTestCase
     public function newProjectUseCase(): ProjectUseCase
     {
         return new ProjectUseCase(
-            $this->newProjectService()
+            $this->newProjectService(),
+            $this->newUserService()
         );
     }
 
