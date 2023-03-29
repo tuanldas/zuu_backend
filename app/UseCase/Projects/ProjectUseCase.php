@@ -24,14 +24,6 @@ class ProjectUseCase implements ProjectUseCaseInterface
         if (!$user) {
             throw new NotFoundHttpException();
         }
-        return Project::where('owner', $user->id)->paginate(10, [
-            'uuid',
-            'name',
-            'icon',
-            'is_favorites',
-            'status',
-            'priority',
-            'owner'
-        ]);
+        return $this->projectService->getProfilesByUserId($user->id);
     }
 }
