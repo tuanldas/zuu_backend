@@ -16,7 +16,7 @@ class GetProjectsByUserIdTest extends TestCase
         $user = $this->createUser();
         $project = $this->createProject($user->id);
         $projectUseCase = $this->newProjectUseCase();
-        $response = $projectUseCase->getProjectsByUserUUid($user->id);
+        $response = $projectUseCase->getProjectsByUserUUid($user->uuid);
         $dataResponse = $response[0];
         $this->assertEquals($project->uuid, $dataResponse->uuid);
         $this->assertEquals($project->name, $dataResponse->name);
