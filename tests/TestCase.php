@@ -3,7 +3,9 @@
 namespace Tests;
 
 use App\Repositories\Users\UserRepository;
+use App\Service\Projects\ProjectService;
 use App\Service\Users\UserService;
+use App\UseCase\Projects\ProjectUseCase;
 use App\UseCase\Users\UserUseCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -35,5 +37,17 @@ abstract class TestCase extends BaseTestCase
         return new UserUseCase(
             $this->newUserService()
         );
+    }
+
+    public function newProjectUseCase(): ProjectUseCase
+    {
+        return new ProjectUseCase(
+            $this->newProjectService()
+        );
+    }
+
+    public function newProjectService(): ProjectService
+    {
+        return new ProjectService();
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\UseCase\Projects;
+use App\Models\Project;
 use App\Service\Projects\ProjectServiceInterface;
 
 class ProjectUseCase implements ProjectUseCaseInterface
@@ -14,5 +15,13 @@ class ProjectUseCase implements ProjectUseCaseInterface
 
     public function getProjectsByUserId($userId)
     {
+        return Project::paginate(10, [
+            'uuid',
+            'name',
+            'icon',
+            'is_favorites',
+            'status',
+            'priority',
+        ]);
     }
 }
