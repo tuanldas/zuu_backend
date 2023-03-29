@@ -50,7 +50,9 @@ abstract class TestCase extends BaseTestCase
 
     public function newProjectService(): ProjectService
     {
-        return new ProjectService();
+        return new ProjectService(
+            $this->newProjectRepository()
+        );
     }
 
     public function newProjectRepository(): ProjectRepository
