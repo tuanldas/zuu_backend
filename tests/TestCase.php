@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Repositories\Projects\ProjectRepository;
 use App\Repositories\Users\UserRepository;
 use App\Service\Projects\ProjectService;
 use App\Service\Users\UserService;
@@ -50,5 +51,10 @@ abstract class TestCase extends BaseTestCase
     public function newProjectService(): ProjectService
     {
         return new ProjectService();
+    }
+
+    public function newProjectRepository(): ProjectRepository
+    {
+        return new ProjectRepository();
     }
 }

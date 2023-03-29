@@ -10,4 +10,10 @@ class ProjectRepository extends EloquentRepository implements ProjectRepositoryI
     {
         return Project::class;
     }
+
+    public function getProjectsByUserId(int $userId, $column = ['*'])
+    {
+        return Project::where('owner', $userId)
+            ->paginate(10, $column);
+    }
 }
