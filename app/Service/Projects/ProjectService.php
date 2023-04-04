@@ -20,11 +20,14 @@ class ProjectService implements ProjectServiceInterface
             [
                 'uuid',
                 'name',
+                'description',
+                'summary',
                 'icon',
                 'is_favorites',
+                'owner',
                 'status',
                 'priority',
-                'owner'
+                'created_at'
             ]);
     }
 }
