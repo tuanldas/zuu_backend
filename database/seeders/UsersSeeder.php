@@ -19,6 +19,8 @@ class UsersSeeder extends Seeder
         $pathFileAvatar = 'avatar-user/' . md5('avatar-1' . time()) . '.png';
         Storage::disk('local')->put($pathFileAvatar, file_get_contents(public_path() . '/images/avatar-user/avatar-1.png'));
         $user = User::factory()->create([
+            'name' => 'Administrator',
+            'email' => 'admin@tuanld.vn',
             'password' => bcrypt('123123')
         ]);
         UserProfile::factory()->create([
