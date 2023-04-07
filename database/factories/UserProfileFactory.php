@@ -3,9 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Users\Models\UserProfile;
 
 class UserProfileFactory extends Factory
 {
+    protected $model = UserProfile::class;
+
     public function definition(): array
     {
         return [

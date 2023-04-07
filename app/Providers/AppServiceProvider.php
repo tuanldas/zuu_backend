@@ -13,6 +13,8 @@ use App\Service\Users\UserService;
 use App\Service\Users\UserServiceInterface;
 use App\UseCase\Projects\ProjectUseCase;
 use App\UseCase\Projects\ProjectUseCaseInterface;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
 use Modules\Users\Repositories\UserRepository;
@@ -81,6 +83,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Factory::guessFactoryNamesUsing(function (string $modelName) {
+            return 'Database\\Factories\\' . Arr::last(explode('\\', $modelName)) . 'Factory';
+        });
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     }
 }
