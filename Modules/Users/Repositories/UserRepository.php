@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Users;
-use App\Models\User;
+namespace Modules\Users\Repositories;
 use App\Repositories\Eloquent\EloquentRepository;
+use Modules\Users\Models\User;
 
 class UserRepository extends EloquentRepository implements UserRepositoryInterface
 {

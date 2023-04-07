@@ -7,18 +7,18 @@ use App\Repositories\Eloquent\EloquentRepository;
 use App\Repositories\Eloquent\EloquentRepositoryInterface;
 use App\Repositories\Projects\ProjectRepository;
 use App\Repositories\Projects\ProjectRepositoryInterface;
-use App\Repositories\Users\UserRepository;
-use App\Repositories\Users\UserRepositoryInterface;
 use App\Service\Projects\ProjectService;
 use App\Service\Projects\ProjectServiceInterface;
 use App\Service\Users\UserService;
 use App\Service\Users\UserServiceInterface;
 use App\UseCase\Projects\ProjectUseCase;
 use App\UseCase\Projects\ProjectUseCaseInterface;
-use App\UseCase\Users\UserUseCase;
-use App\UseCase\Users\UserUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
+use Modules\Users\Repositories\UserRepository;
+use Modules\Users\Repositories\UserRepositoryInterface;
+use Modules\Users\UseCase\UserUseCase;
+use Modules\Users\UseCase\UserUseCaseInterface;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Models;
+namespace Modules\Users\Models;
 
-use App\Enums\User\LoginTypeEnums;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\NewAccessToken;
+use Modules\Users\Enums\LoginTypeEnums;
 
 class User extends Authenticatable
 {

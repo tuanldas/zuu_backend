@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UseCase\Users;
+namespace Modules\Users\UseCase;
 use App\Service\Users\UserServiceInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
