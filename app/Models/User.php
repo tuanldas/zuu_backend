@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Users\Models;
+namespace App\Models;
 
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\NewAccessToken;
 use Modules\Users\Enums\LoginTypeEnums;
+use Modules\Users\Models\UserProfile;
 
 class User extends Authenticatable
 {

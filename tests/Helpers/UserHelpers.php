@@ -2,7 +2,7 @@
 
 namespace Tests\Helpers;
 
-use Modules\Users\Models\User;
+use App\Models\User;
 use Modules\Users\Models\UserProfile;
 
 trait UserHelpers

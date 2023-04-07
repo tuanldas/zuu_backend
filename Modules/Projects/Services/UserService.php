@@ -2,7 +2,7 @@
 
 namespace Modules\Projects\Services;
 
-use Modules\Users\Models\User;
+use App\Models\User;
 use Modules\Users\Repositories\UserRepositoryInterface;
 
 class UserService implements UserServiceInterface
