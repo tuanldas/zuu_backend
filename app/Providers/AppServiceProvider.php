@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
+use Modules\Projects\Repositories\Eloquent\EloquentRepository;
 use Modules\Projects\Repositories\ProjectRepository;
 use Modules\Projects\Repositories\ProjectRepositoryInterface;
 use Modules\Projects\Services\ProjectService;
@@ -16,6 +17,8 @@ use Modules\Projects\UseCases\ProjectUseCase;
 use Modules\Projects\UseCases\ProjectUseCaseInterface;
 use Modules\Users\Repositories\UserRepository;
 use Modules\Users\Repositories\UserRepositoryInterface;
+use Modules\Users\Services\UserService;
+use Modules\Users\Services\UserServiceInterface;
 use Modules\Users\UseCase\UserUseCase;
 use Modules\Users\UseCase\UserUseCaseInterface;
 
@@ -33,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         $this->registerRepositories();
     }
 
-    protected function registerUseCases()
+    protected function registerUseCases(): void
     {
         $this->app->singleton(
             UserUseCaseInterface::class,
@@ -45,10 +48,10 @@ class AppServiceProvider extends ServiceProvider
         );
     }
 
-    protected function registerServices()
+    protected function registerServices(): void
     {
         $this->app->singleton(
-            ProjectServiceInterface::class,
+            UserServiceInterface::class,
             UserService::class
         );
         $this->app->singleton(
@@ -57,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
         );
     }
 
-    protected function registerRepositories()
+    protected function registerRepositories(): void
     {
         $this->app->singleton(
             EloquentRepositoryInterface::class,

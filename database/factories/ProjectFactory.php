@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Project;
+use \Modules\Projects\Models\Project;
 
 class ProjectFactory extends Factory
 {
     protected $model = Project::class;
+
     /**
      * Define the model's default state.
      *
