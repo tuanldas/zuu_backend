@@ -3,12 +3,12 @@
 namespace App\Providers;
 
 use App\Models\PersonalAccessToken;
+use App\Repositories\Eloquent\EloquentRepository;
 use App\Repositories\Eloquent\EloquentRepositoryInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
-use Modules\Projects\Repositories\Eloquent\EloquentRepository;
 use Modules\Projects\Repositories\ProjectRepository;
 use Modules\Projects\Repositories\ProjectRepositoryInterface;
 use Modules\Projects\Services\ProjectService;
