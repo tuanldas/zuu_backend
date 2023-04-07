@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProjectController;
+use Modules\Projects\Controllers\ProjectController;
+use Modules\Users\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------

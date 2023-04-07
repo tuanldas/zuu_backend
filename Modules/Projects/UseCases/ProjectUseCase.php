@@ -1,9 +1,8 @@
 <?php
 
-namespace App\UseCase\Projects;
-use App\Models\Project;
+namespace Modules\Projects\UseCases;
 use App\Service\Projects\ProjectServiceInterface;
-use App\Service\Users\UserServiceInterface;
+use Modules\Projects\Services\UserServiceInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProjectUseCase implements ProjectUseCaseInterface

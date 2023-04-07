@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace Modules\Projects\Repositories\Eloquent;
 abstract class EloquentRepository implements EloquentRepositoryInterface
 {
     protected $model;

@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Service\Users;
+namespace Modules\Projects\Services;
+
 use Modules\Users\Models\User;
 use Modules\Users\Repositories\UserRepositoryInterface;
 

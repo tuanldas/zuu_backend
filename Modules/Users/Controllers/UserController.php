@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modules\Users\Controllers;
 
+use App\Http\Controllers\Controller;
 use Modules\Users\UseCase\UserUseCaseInterface;
 
 class UserController extends Controller

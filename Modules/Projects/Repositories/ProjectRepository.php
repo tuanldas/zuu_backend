@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Repositories\Projects;
-use App\Models\Project;
-use App\Repositories\Eloquent\EloquentRepository;
+namespace Modules\Projects\Repositories;
+
+use Modules\Projects\Models\Project;
+use Modules\Projects\Repositories\Eloquent\EloquentRepository;
 
 class ProjectRepository extends EloquentRepository implements ProjectRepositoryInterface
 {
@@ -13,7 +14,7 @@ class ProjectRepository extends EloquentRepository implements ProjectRepositoryI
 
     public function getProjectsByUserId(int $userId, $column = ['*'])
     {
-        return Project::where('owner', $userId)
+        return $this->model->where('owner', $userId)
             ->paginate(10, $column);
     }
 }

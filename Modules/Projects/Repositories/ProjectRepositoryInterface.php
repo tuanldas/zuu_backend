@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Projects;
+namespace Modules\Projects\Repositories;
 use App\Repositories\Eloquent\EloquentRepositoryInterface;
 
 interface ProjectRepositoryInterface extends EloquentRepositoryInterface
