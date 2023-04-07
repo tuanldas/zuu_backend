@@ -3,18 +3,15 @@
 namespace App\Providers;
 
 use App\Models\PersonalAccessToken;
-use App\Repositories\Eloquent\EloquentRepository;
 use App\Repositories\Eloquent\EloquentRepositoryInterface;
-use App\Service\Projects\ProjectService;
-use App\Service\Projects\ProjectServiceInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
 use Modules\Projects\Repositories\ProjectRepository;
 use Modules\Projects\Repositories\ProjectRepositoryInterface;
-use Modules\Projects\Services\UserService;
-use Modules\Projects\Services\UserServiceInterface;
+use Modules\Projects\Services\ProjectService;
+use Modules\Projects\Services\ProjectServiceInterface;
 use Modules\Projects\UseCases\ProjectUseCase;
 use Modules\Projects\UseCases\ProjectUseCaseInterface;
 use Modules\Users\Repositories\UserRepository;
@@ -51,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
     protected function registerServices()
     {
         $this->app->singleton(
-            UserServiceInterface::class,
+            ProjectServiceInterface::class,
             UserService::class
         );
         $this->app->singleton(

@@ -2,14 +2,14 @@
 
 namespace Modules\Users\UseCase;
 
-use Modules\Projects\Services\UserServiceInterface;
+use Modules\Projects\Services\ProjectServiceInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UserUseCase implements UserUseCaseInterface
 {
-    protected UserServiceInterface $userService;
+    protected ProjectServiceInterface $userService;
 
-    public function __construct(UserServiceInterface $userService)
+    public function __construct(ProjectServiceInterface $userService)
     {
         $this->userService = $userService;
     }
