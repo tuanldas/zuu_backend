@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Projects;
+namespace Modules\Projects\Services;
 interface ProjectServiceInterface
 {
     public function getProfilesByUserId(int $userId);

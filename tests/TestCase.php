@@ -2,14 +2,14 @@
 
 namespace Tests;
 
-use App\Repositories\Projects\ProjectRepository;
-use App\Repositories\Users\UserRepository;
-use App\Service\Projects\ProjectService;
-use App\Service\Users\UserService;
-use App\UseCase\Projects\ProjectUseCase;
-use App\UseCase\Users\UserUseCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Modules\Projects\Repositories\ProjectRepository;
+use Modules\Projects\Services\ProjectService;
+use Modules\Projects\UseCases\ProjectUseCase;
+use Modules\Users\Repositories\UserRepository;
+use Modules\Users\Services\UserService;
+use Modules\Users\UseCase\UserUseCase;
 
 abstract class TestCase extends BaseTestCase
 {

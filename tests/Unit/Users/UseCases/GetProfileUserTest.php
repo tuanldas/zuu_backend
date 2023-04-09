@@ -2,9 +2,6 @@
 
 namespace Tests\Unit\Users\UseCases;
 
-use App\Models\User;
-use App\Models\UserProfile;
-use App\UseCase\Users\UserUseCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tests\Helpers\UserHelpers;
 use Tests\TestCase;

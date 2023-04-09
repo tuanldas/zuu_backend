@@ -3,10 +3,7 @@
 namespace Tests\Helpers;
 
 use App\Models\User;
-use App\Models\UserProfile;
-use App\Repositories\Users\UserRepository;
-use App\Service\Users\UserService;
-use function Symfony\Component\String\u;
+use Modules\Users\Models\UserProfile;
 
 trait UserHelpers
 {

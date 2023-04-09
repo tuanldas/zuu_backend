@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Users;
+namespace Modules\Users\Services;
 interface UserServiceInterface
 {
     public function getProfileUser(string $uuid);

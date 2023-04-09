@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modules\Users\Controllers;
 
-use App\UseCase\Users\UserUseCaseInterface;
-use Illuminate\Support\Facades\Crypt;
+use App\Http\Controllers\Controller;
+use Modules\Users\UseCase\UserUseCaseInterface;
 
 class UserController extends Controller
 {

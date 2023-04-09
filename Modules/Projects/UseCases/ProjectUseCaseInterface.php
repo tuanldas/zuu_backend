@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UseCase\Projects;
+namespace Modules\Projects\UseCases;
 interface ProjectUseCaseInterface
 {
     public function getProjectsByUserUUid($userUUid);

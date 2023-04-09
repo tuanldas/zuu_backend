@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Service\Projects;
-use App\Models\User;
-use App\Repositories\Projects\ProjectRepositoryInterface;
-use App\Repositories\Users\UserRepositoryInterface;
+namespace Modules\Projects\Services;
+
+
+use Modules\Projects\Repositories\ProjectRepositoryInterface;
 
 class ProjectService implements ProjectServiceInterface
 {

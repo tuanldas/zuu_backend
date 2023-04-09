@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Str;
-use Ramsey\Uuid\Nonstandard\Uuid;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
-    public function login(LoginRequest $loginRequest)
+    public function login(LoginRequest $loginRequest): JsonResponse
     {
         $certificate = [
             'email' => $loginRequest->username,
@@ -32,5 +29,13 @@ class AuthController extends Controller
             "error" => "invalid_grant",
             "error_description" => __('auth.invalid_user_credentials')
         ], 401);
+    }
+
+    public function logout(Request $request): JsonResponse
+    {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json([
+            'status' => true
+        ]);
     }
 }

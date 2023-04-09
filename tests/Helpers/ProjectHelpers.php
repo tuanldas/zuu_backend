@@ -2,8 +2,8 @@
 
 namespace Tests\Helpers;
 
-use App\Models\Project;
-use App\UseCase\Projects\ProjectUseCase;
+use Modules\Projects\Models\Project;
+use Modules\Projects\UseCases\ProjectUseCase;
 
 trait ProjectHelpers
 {

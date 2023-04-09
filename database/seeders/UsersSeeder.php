@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\UserProfile;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
+use Modules\Users\Models\UserProfile;
 
 class UsersSeeder extends Seeder
 {

@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProjectController;
+use Modules\Projects\Controllers\ProjectController;
+use Modules\Users\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +30,10 @@ Route::middleware('auth:sanctum')->group(function () {
         ->controller(ProjectController::class)
         ->group(function () {
             Route::get('/', 'getProjects');
+        });
+    Route::prefix('/auth')
+        ->controller(AuthController::class)
+        ->group(function () {
+            Route::post('/logout', 'logout');
         });
 });

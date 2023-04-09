@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modules\Projects\Controllers;
 
-use App\UseCase\Projects\ProjectUseCaseInterface;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Modules\Projects\UseCases\ProjectUseCaseInterface;
 
 class ProjectController extends Controller
 {
