@@ -31,4 +31,9 @@ Route::middleware('auth:sanctum')->group(function () {
         ->group(function () {
             Route::get('/', 'getProjects');
         });
+    Route::prefix('/auth')
+        ->controller(AuthController::class)
+        ->group(function () {
+            Route::post('/logout', 'logout');
+        });
 });
