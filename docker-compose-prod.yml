@@ -4,6 +4,15 @@ services:
     networks:
       - publish
 
+  php-fpm:
+    restart: always
+
+  mysql:
+    restart: always
+
+  redis:
+    restart: always
+
 networks:
   publish:
     external: true
